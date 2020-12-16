@@ -1,0 +1,61 @@
+openapi: "3.0.2"
+info:
+  title: Solat API Malaysia
+  version: "1.0"
+servers:
+  - url: https://solatapi.fajarhac.com
+
+components:
+  schemas:
+    zone:
+      $ref: "./schemas/zone.yml"
+    state:
+      $ref: "./schemas/state.yml"
+
+paths:
+  /times:
+    get:
+      description: Get Solat Time
+      parameters:
+        - name: zone
+          description: >
+            Zone code for solat zone. Refer: `/zones`
+          in: query
+          required: true
+          schema:
+            $ref: "#/components/schemas/zone"
+        - name: start
+          in: query
+          required: true
+          schema:
+            type: string
+            description: Date in format ddMMYYYY. For example 01112021 for 1st November 2021
+
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+  /zones:
+    get:
+      description: List of zones
+      responses:
+        "200":
+          description: >
+            Response list of zones
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    $ref: "#/components/schemas/state"
+
+  /info:
+    get:
+      description: About SolatAPI Malaysia
+      responses:
+        "200":
+          description: OK

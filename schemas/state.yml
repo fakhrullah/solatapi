@@ -1,0 +1,20 @@
+type: string
+enum:
+- johor
+- kedah
+- kelantan
+- melaka
+- negeri sembilan
+- pahang
+- perak
+- perlis
+- pulau pinang
+- sabah
+- sarawak
+- selangor
+- terengganu
+- putrajaya
+- kuala lumpur
+- labuan
+example:
+- terengganu
