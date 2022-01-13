@@ -145,6 +145,112 @@ paths:
                     $ref:  "#/components/schemas/zone_detail"
                   prayer_times:
                     $ref:  "#/components/schemas/prayer_times"
+
+  /today/{zone}:
+    get:
+      tags:
+        - "times"
+      description: Get Solat Time for today
+      parameters:
+        - name: zone
+          description: >
+            Zone code for solat zone. Refer: [Zones Docs](/zones)
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/zone"
+        - name: format
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - 12-hour # default
+              - 24-hour
+              - timestamp
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  zone_detail:
+                    $ref:  "#/components/schemas/zone_detail"
+                  prayer_times:
+                    $ref:  "#/components/schemas/prayer_times"
+  
+  /tomorrow/{zone}:
+    get:
+      tags:
+        - "times"
+      description: Get Solat Time for for tomorrow
+      parameters:
+        - name: zone
+          description: >
+            Zone code for solat zone. Refer: [Zones Docs](/zones)
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/zone"
+        - name: format
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - 12-hour # default
+              - 24-hour
+              - timestamp
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  zone_detail:
+                    $ref:  "#/components/schemas/zone_detail"
+                  prayer_times:
+                    $ref:  "#/components/schemas/prayer_times"
+
+  /yesterday/{zone}:
+    get:
+      tags:
+        - "times"
+      description: Get Solat Time for for yesterday
+      parameters:
+        - name: zone
+          description: >
+            Zone code for solat zone. Refer: [Zones Docs](/zones)
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/zone"
+        - name: format
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - 12-hour # default
+              - 24-hour
+              - timestamp
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  zone_detail:
+                    $ref:  "#/components/schemas/zone_detail"
+                  prayer_times:
+                    $ref:  "#/components/schemas/prayer_times"
+
   /zones:
     get:
       tags:
