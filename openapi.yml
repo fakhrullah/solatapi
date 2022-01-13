@@ -1,7 +1,29 @@
-openapi: "3.0.2"
+openapi: "3.0.3"
 info:
   title: Solat API Malaysia
+  x-logo: 
+    url: https://fajarhac.com/static/7035a9f0c12ca862b0565dd65b0443a7/67a33/site-logo.png
+    altText: Solat API Malaysia logo
+  description: |
+    Solat API Malaysia, mengambil data waktu solat untuk lokasi-lokasi di Malaysia melalui laman web JAKIM.
+
+    Data yang diambil dari laman web JAKIM akan dimasukkan di dalam databes kami sendiri, untuk tujuan kestabilan API.
+
+    API ini dilepaskan kepada umum secara percuma, **tanpa sebarang janji dan waranti**. Tuan puan boleh menggunakan API ini sebagaimana disediakan.
+
+    ## Kualiti dan kesahihan data
+
+    Tarikh terakhir data dikaut dari laman web JAKIM (e-solat) ialah **17hb Disember 2021**.
+
+    Walaubagaimanapun, untuk menjamin kesahihan data, Solat API Malaysia pada setiap hari akan menyemak waktu solat untuk 10 zon secara rawak. Kemudian membandingkan data tersebut dengan data dalam Solat API Malaysia.
+
+    Sekiranya, ada perbezaan, satu isu baru akan dibuat di github.
+
   version: "1.0"
+  contact:
+    name: Fakhrullah Padzil (Github)
+    url: https://github.com/fakhrullah/solat-api-jakim-unofficial-proxy
+    x-twitter: https://twitter.com/fajarhac
 servers:
   - url: https://solatapi.fajarhac.com
 
@@ -11,26 +33,106 @@ components:
       $ref: "./schemas/zone.yml"
     state:
       $ref: "./schemas/state.yml"
+    location:
+      $ref: "./schemas/location.yml"
+    zone_detail:
+      $ref: "./schemas/zone-detail.yml"
+    zones:
+      type: array
+      description: List of zones
+      items:
+        $ref:  "#/components/schemas/zone_detail"
+      example:
+        - zone: jhr01
+          state: johor
+          locations:
+            - pulau aur
+            - pemanggil
+        - zone: wly02
+          state: labuan
+          locations:
+            - labuan
+    prayer_time:
+      type: object
+      description: Daily prayer time
+      properties:
+        date:
+          type: string
+          example: '04-11-2021'
+        date_timestamp:
+          type: number
+          example: 1635955200000
+        imsak:
+          type: number
+          example: 1635955200000
+        subuh:
+          type: number
+          example: 1635955200000
+        syuruk:
+          type: number
+          example: 1635955200000
+        zohor:
+          type: number
+          example: 1635955200000
+        asar:
+          type: number
+          example: 1635955200000
+        maghrib:
+          type: number
+          example: 1635955200000
+        isyak:
+          type: number
+          example: 1635955200000
+    prayer_times:
+      type: array
+      description: List of daily prayer times
+      items:
+        $ref:  "#/components/schemas/prayer_time"
+
+tags:
+  - name: times
+    description: Waktu solat
+  - name: zones
+    description: Zon, Negeri, Wilayah dan Lokasi
 
 paths:
   /times:
     get:
+      tags:
+        - "times"
       description: Get Solat Time
       parameters:
         - name: zone
           description: >
-            Zone code for solat zone. Refer: `/zones`
+            Zone code for solat zone. Refer: [Zones Docs](/zones)
           in: query
           required: true
           schema:
             $ref: "#/components/schemas/zone"
-        - name: start
+        - name: start-date
           in: query
           required: true
+          description: Date in format dd-MM-YYYY. For example 01112021 for 4th November 2021
           schema:
             type: string
-            description: Date in format ddMMYYYY. For example 01112021 for 1st November 2021
-
+            example: '04-11-2021'
+            description: Date in format dd-MM-YYYY. For example 04-11-2021 for 4th November 2021
+        - name: end-date
+          in: query
+          required: false
+          schema:
+            type: string
+            example: '06-11-2021'
+            description: Date in format dd-MM-YYYY. For example 06-11-2021 for 6th November 2021
+        - name: format
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - 12-hour # default
+              - 24-hour
+              - timestamp
       responses:
         "200":
           description: ""
@@ -38,23 +140,48 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  zone_detail:
+                    $ref:  "#/components/schemas/zone_detail"
+                  prayer_times:
+                    $ref:  "#/components/schemas/prayer_times"
   /zones:
     get:
+      tags:
+        - "zones"
       description: List of zones
       responses:
         "200":
           description: >
-            Response list of zones
+            Show all list of zones.
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  state:
-                    $ref: "#/components/schemas/state"
+                $ref:  "#/components/schemas/zones"
+  /zones/{zone}:
+    get:
+      tags:
+        - "zones"
+      description: Get detail of zone
+      parameters:
+        - name: zone
+          required: true
+          in: path
+          description: The code of zone
+          schema:
+            $ref:  "#/components/schemas/zone"
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/zone_detail"
 
   /info:
     get:
+      tags:
+        - info
       description: About SolatAPI Malaysia
       responses:
         "200":

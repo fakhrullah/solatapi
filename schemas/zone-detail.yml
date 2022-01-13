@@ -1,0 +1,13 @@
+type: object
+properties:
+  zone:
+    $ref: "./zone.yml"
+  state:
+    $ref: "./state.yml"
+  locations:
+    type: array
+    items:
+      $ref: "./location.yml"
+    example:
+      - setiu
+      - besut

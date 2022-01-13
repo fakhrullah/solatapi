@@ -1,0 +1,222 @@
+type: string
+enum:
+- pulau aur # johor
+- pemanggil
+- kota tinggi
+- mersing
+- johor bahru
+- kluang
+- pontian
+- batu pahat
+- muar
+- segamat
+- gemas
+- kota setar # kedah
+- kubang pasu
+- pokok sena
+- pendang
+- kuala muda
+- yan
+- padang terap
+- sik
+- baling
+- kulim
+- bandar bahru
+- langkawi
+- gunung jerai
+- kota bahru # kelantan
+- bachok
+- pasir puteh
+- tumpat
+- pasir mas
+- tanah merah
+- machang
+- kuala krai
+- mukim chiku
+- jeli
+- gua musang
+- mukim galas
+- bertam
+- bandar melaka # melaka
+- alor gajah
+- jasin
+- masjid tanah
+- merlimau
+- nyalas
+- jempol # negeri sembilan
+- tampin
+- port dickson
+- seremban
+- kuala pilah
+- jelebu
+- rembau
+- pulau tioman # pahang
+- kuantan
+- pekan
+- rompin
+- muadzam shah
+- maran
+- chenor
+- temerloh
+- bera
+- jerantut
+- jengka
+- bentong
+- raub
+- kuala lipis
+- genting sempah
+- janda baik
+- bukit tinggi
+- bukit fraser
+- genting highlands
+- cameron highlands
+- tapah # perak
+- slim river
+- tanjung malim
+- ipoh
+- batu gajah
+- kampar
+- sungai siput
+- kuala kangsar
+- pengkalan hulu
+- grik
+- lenggong
+- temengor
+- belum
+- teluk intan
+- bagan datuk
+- kampung gajah
+- seri iskandar
+- beruas
+- parit
+- lumut
+- sitiawan
+- pulau pangkor
+- selama
+- taiping
+- bagan serai
+- parit buntar
+- bukit larut
+- kangar
+- padang besar
+- arau
+- pulau pinang # pulau pinang
+- sandakan timur # sabah
+- bukit garam
+- semawang
+- temanggong
+- tambisan
+- sukau
+- pinangah
+- terusan
+- beluran
+- kuamut
+- telupid
+- sandakan barat
+- lahad datu
+- kunak
+- silabukan
+- tungku
+- sahabat
+- semporna
+- tawau timur
+- bandar tawau
+- balong
+- merotai
+- kalabakan
+- tawau barat
+- kudat
+- kota marudu
+- pitas
+- pulau banggi
+- gunung kinabalu
+- papar
+- ranau
+- kota belud
+- tuaran
+- penampang
+- kota kinabalu
+- putatan
+- pantai barat
+- pensiangan
+- keningau
+- tambunan
+- nabawan
+- sipitang
+- membakut
+- beaufort
+- kuala penyu
+- weston
+- tenom
+- long pa sia
+- limbang # sarawak
+- sundar
+- terusan
+- lawas
+- niah
+- belaga
+- sibuti
+- miri
+- bekenu
+- marudi
+- song
+- balingian
+- sebauh
+- bintulu
+- tatau
+- kapit
+- igan
+- kanowit
+- sibu
+- dalat
+- oya
+- belawai
+- matu
+- daro
+- sarikei
+- julau
+- bitangor
+- rajang
+- kabong
+- lingga
+- sri aman
+- engkelili
+- betong
+- spaoh
+- pusa
+- saratok
+- roban
+- debak
+- samarahan
+- simunjan
+- serian
+- sebuyau
+- meludam
+- kuching
+- bau
+- lundu
+- sematan
+- zon khas
+- gombak # selangor
+- hulu selangor
+- rawang
+- hulu langat
+- sepang
+- petaling
+- shah alam
+- sabak bernam
+- kuala selangor
+- klang
+- kuala langat
+- kuala terengganu # terengganu
+- marang
+- kuala nerus
+- besut
+- setiu
+- hulu terengganu
+- kemaman
+- dungun
+- putrajaya # wilayah
+- kuala lumpur
+- labuan
+example: setiu
