@@ -109,7 +109,7 @@ paths:
           required: true
           schema:
             $ref: "#/components/schemas/zone"
-        - name: start-date
+        - name: from
           in: query
           required: true
           description: Date in format dd-MM-YYYY. For example 01112021 for 4th November 2021
@@ -117,7 +117,7 @@ paths:
             type: string
             example: "04-11-2021"
             description: Date in format dd-MM-YYYY. For example 04-11-2021 for 4th November 2021
-        - name: end-date
+        - name: to
           in: query
           required: false
           schema:
