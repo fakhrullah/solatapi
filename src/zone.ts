@@ -1,4 +1,4 @@
-const enum ZoneCode {
+enum ZoneCode {
   jhr01 = 'jhr01',
   jhr02 = 'jhr02',
   jhr03 = 'jhr03',
