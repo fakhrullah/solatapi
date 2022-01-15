@@ -26,6 +26,7 @@ info:
     x-twitter: https://twitter.com/fajarhac
 servers:
   - url: https://solatapi.fajarhac.com
+  - url: http://localhost:4000
 
 components:
   schemas:
@@ -53,36 +54,7 @@ components:
           locations:
             - labuan
     prayer_time:
-      type: object
-      description: Daily prayer time
-      properties:
-        date:
-          type: string
-          example: "04-11-2021"
-        date_timestamp:
-          type: number
-          example: 1635955200000
-        imsak:
-          type: number
-          example: 1635955200000
-        subuh:
-          type: number
-          example: 1635955200000
-        syuruk:
-          type: number
-          example: 1635955200000
-        zohor:
-          type: number
-          example: 1635955200000
-        asar:
-          type: number
-          example: 1635955200000
-        maghrib:
-          type: number
-          example: 1635955200000
-        isyak:
-          type: number
-          example: 1635955200000
+      $ref: "./schemas/prayer-time.json"
     prayer_times:
       type: array
       description: List of daily prayer times
