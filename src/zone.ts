@@ -1,4 +1,4 @@
-enum ZoneCode {
+const enum ZoneCode {
   jhr01 = 'jhr01',
   jhr02 = 'jhr02',
   jhr03 = 'jhr03',
@@ -59,3 +59,5 @@ enum ZoneCode {
   wly01 = 'wly01',
   wly02 = 'wly02',
 }
+
+export default ZoneCode;
