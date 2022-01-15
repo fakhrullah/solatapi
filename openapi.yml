@@ -31,7 +31,7 @@ servers:
 components:
   schemas:
     zone:
-      $ref: "./schemas/zone.yml"
+      $ref: "./schemas/zone.json"
     state:
       $ref: "./schemas/state.yml"
     location:

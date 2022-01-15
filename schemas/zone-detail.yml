@@ -1,7 +1,7 @@
 type: object
 properties:
   zone:
-    $ref: "./zone.yml"
+    $ref: "./zone.json"
   state:
     $ref: "./state.yml"
   locations:
