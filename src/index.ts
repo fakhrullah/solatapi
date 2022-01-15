@@ -1,6 +1,9 @@
 import fastify from 'fastify';
+import timesRoute from './times-route.js';
 
 const server = fastify();
+
+server.register(timesRoute);
 
 server.get('/', async (req, reply) => {
   return {
