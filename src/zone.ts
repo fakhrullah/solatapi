@@ -11,7 +11,6 @@ enum ZoneCode {
   kdh06 = 'kdh06',
   kdh07 = 'kdh07',
   ktn01 = 'ktn01',
-  ktn02 = 'ktn02',
   ktn03 = 'ktn03',
   mlk01 = 'mlk01',
   ngs01 = 'ngs01',
