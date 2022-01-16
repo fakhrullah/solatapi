@@ -100,11 +100,7 @@ paths:
           in: query
           required: false
           schema:
-            type: string
-            enum:
-              - 12-hour # default
-              - 24-hour
-              - timestamp
+            $ref: ./schemas/output-format.json
       responses:
         "200":
           description: ""
