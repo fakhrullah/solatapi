@@ -11,32 +11,109 @@
             "example": 1635955200000
         },
         "imsak": {
-            "type": "number",
-            "example": 1635955200000
+            "anyOf": [
+                {
+                    "type": "number",
+                    "example": 1635955200000
+                },
+                {
+                    "type": "string",
+                    "example": [
+                        "5:30 am",
+                        "05:30:00"
+                    ]
+                }
+            ]
         },
         "subuh": {
-            "type": "number",
-            "example": 1635955200000
+            "anyOf": [
+                {
+                    "type": "number",
+                    "example": 1635955200000
+                },
+                {
+                    "type": "string",
+                    "example": [
+                        "5:30 am",
+                        "05:30:00"
+                    ]
+                }
+            ]
         },
         "syuruk": {
-            "type": "number",
-            "example": 1635955200000
+            "anyOf": [
+                {
+                    "type": "number",
+                    "example": 1635955200000
+                },
+                {
+                    "type": "string",
+                    "example": [
+                        "5:30 am",
+                        "05:30:00"
+                    ]
+                }
+            ]
         },
         "zohor": {
-            "type": "number",
-            "example": 1635955200000
+            "anyOf": [
+                {
+                    "type": "number",
+                    "example": 1635955200000
+                },
+                {
+                    "type": "string",
+                    "example": [
+                        "5:30 am",
+                        "05:30:00"
+                    ]
+                }
+            ]
         },
         "asar": {
-            "type": "number",
-            "example": 1635955200000
+            "anyOf": [
+                {
+                    "type": "number",
+                    "example": 1635955200000
+                },
+                {
+                    "type": "string",
+                    "example": [
+                        "5:30 am",
+                        "05:30:00"
+                    ]
+                }
+            ]
         },
         "maghrib": {
-            "type": "number",
-            "example": 1635955200000
+            "anyOf": [
+                {
+                    "type": "number",
+                    "example": 1635955200000
+                },
+                {
+                    "type": "string",
+                    "example": [
+                        "5:30 am",
+                        "05:30:00"
+                    ]
+                }
+            ]
         },
         "isyak": {
-            "type": "number",
-            "example": 1635955200000
+            "anyOf": [
+                {
+                    "type": "number",
+                    "example": 1635955200000
+                },
+                {
+                    "type": "string",
+                    "example": [
+                        "5:30 am",
+                        "05:30:00"
+                    ]
+                }
+            ]
         }
     }
 }

@@ -4,7 +4,7 @@ import fetch from "node-fetch";
 import path, { dirname } from 'path';
 import { fileURLToPath } from "url";
 import { format as dateFormat, parse as dateParse } from 'date-fns';
-import { PrayerTime } from "../generated-types/PrayerTimes.js";
+import { PrayerTime } from "../PrayerTimes.js";
 import { stringToDate } from "../helpers.js";
 import ZoneCode from "../zone.js";
 
