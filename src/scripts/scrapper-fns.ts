@@ -1,5 +1,14 @@
+import dateFnsTz from "date-fns-tz";
+import { JSONFile, Low } from "lowdb";
 import fetch from "node-fetch";
+import path, { dirname } from 'path';
+import { fileURLToPath } from "url";
+import { format as dateFormat, parse as dateParse } from 'date-fns';
+import { PrayerTime } from "../generated-types/PrayerTimes.js";
+import { stringToDate } from "../helpers.js";
 import ZoneCode from "../zone.js";
+
+const { zonedTimeToUtc } = dateFnsTz;
 
 interface PrayerTimesPerDayRaw {
   hijri: string;
@@ -15,6 +24,7 @@ interface PrayerTimesPerDayRaw {
 }
 
 const buildApiUrl = (zoneCode: ZoneCode) => {
+  // const url = `https://www.e-solat.gov.my/index.php?r=esolatApi/takwimsolat&period=month&zone=${zoneCode}`;
   const url = `https://www.e-solat.gov.my/index.php?r=esolatApi/takwimsolat&period=year&zone=${zoneCode}`;
   return url;
 }
@@ -27,4 +37,55 @@ const solatTimeApiPerYear = async (zoneCode: ZoneCode): Promise<PrayerTimesPerDa
   return prayerTimes;
 }
 
-export default solatTimeApiPerYear;
+const savePrayerTimesPerYear = async (zoneCode: ZoneCode) => {
+  const dbFile = path.join(dirname(fileURLToPath(import.meta.url)), '../../db.json');
+  const dbAdapter = new JSONFile(dbFile);
+  const db = new Low<any>(dbAdapter);
+
+  await db.read();
+
+  db.data ||= {};
+
+  const prayerTimesRaw = await solatTimeApiPerYear(zoneCode);
+
+  const prayerTimesConverted = prayerTimesRaw.map(prayerTime => {
+
+    const timestamp = stringToDate(prayerTime.date).getTime();
+
+    const getDateTimestamp = (time: string) => {
+      const formatedDate = dateFormat(timestamp, 'dd-MM-yyyy');
+      const dateTime = `${formatedDate} ${time}`;
+      const datetimeInKL = dateParse(dateTime, 'dd-MM-yyyy HH:mm:ss', new Date());
+      // console.log(dateTime);
+      return zonedTimeToUtc(datetimeInKL, 'Asia/Kuala_Lumpur');
+    }
+
+    const formattedPrayerTime: PrayerTime = {
+      date: prayerTime.date,
+      date_timestamp: timestamp,
+      imsak: getDateTimestamp(prayerTime.imsak).getTime(),
+      subuh: getDateTimestamp(prayerTime.fajr).getTime(),
+      syuruk: getDateTimestamp(prayerTime.syuruk).getTime(),
+      zohor: getDateTimestamp(prayerTime.dhuhr).getTime(),
+      asar: getDateTimestamp(prayerTime.asr).getTime(),
+      maghrib: getDateTimestamp(prayerTime.maghrib).getTime(),
+      isyak: getDateTimestamp(prayerTime.isha).getTime(),
+    }
+
+    return formattedPrayerTime;
+  });
+
+  console.log(prayerTimesConverted);
+
+  db.data[zoneCode] = prayerTimesConverted;
+
+  await db.write();
+
+  console.log(`DONE: For ${zoneCode}`);
+}
+
+// export default solatTimeApiPerYear;
+export {
+  solatTimeApiPerYear,
+  savePrayerTimesPerYear,
+}
