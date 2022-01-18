@@ -1,4 +1,4 @@
-import { FastifyPluginAsync } from "fastify";
+import { FastifyPluginAsync, RouteShorthandOptions } from "fastify";
 import dateFnsTz from "date-fns-tz";
 import { isAfter, isBefore, parse as dateParse, } from 'date-fns'
 import db from "./db.js";
@@ -50,18 +50,41 @@ const formatPrayerTimes = (format: OutputFormat, prayerTimes: PrayerTime[]): Pra
   return prayerTimes;
 }
 
+const timesRouteOpts : RouteShorthandOptions = {
+  schema: {
+    querystring: {
+      type: 'object',
+      required: ['zone', 'from'],
+      properties: {
+        zone: {
+          type: "string",
+        },
+        from: {
+          type: 'string'
+        },
+        to: {
+          type: 'string'
+        },
+        format: {
+          type: 'string'
+        }
+      }
+    }
+  },
+}
+
 const timesRoute: FastifyPluginAsync = async (fastify, options) => {
 
   fastify.get<{
     Querystring: IQuerystring
-  }>('/times', async (req, reply) => {
+  }>('/times', timesRouteOpts, async (req, reply) => {
     const { zone, from, to, format = 'timestamp' } = req.query;
     const zoneCode = zone.toLowerCase() as ZoneCode;
 
     try {
 
       const fromDate = dateParse(from, 'dd-MM-yyyy', new Date());
-      const toDate = dateParse(to, 'dd-MM-yyyy', new Date());
+      const toDate = dateParse(to ?? from, 'dd-MM-yyyy', new Date());
 
       // Validation query received
       if (isAfter(fromDate, toDate)) {
