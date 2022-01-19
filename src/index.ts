@@ -1,9 +1,11 @@
 import fastify from 'fastify';
+import notImplementYetRoutes from './not-implement-yet-routes.js';
 import timesRoute from './times-route.js';
 
 const server = fastify();
 
 server.register(timesRoute);
+server.register(notImplementYetRoutes);
 
 server.get('/', async (req, reply) => {
   return {
