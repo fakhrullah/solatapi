@@ -4,7 +4,12 @@ interface IDay {
   Params: {
     zone: string
   },
-  
+}
+
+const notImplementYetReply = {
+  statusCode: 501,
+  status: 'success',
+  message: 'Not implement yet. Will implement it as soon as possible.'
 }
 
 const notImplementYetRoutes: FastifyPluginAsync = async (fastify, opts) => {
@@ -22,6 +27,17 @@ const notImplementYetRoutes: FastifyPluginAsync = async (fastify, opts) => {
         status: 'success',
         message: 'Not implement yet. Will implement it as soon as possible.'
       })
+  });
+
+  fastify.get<IDay>('/tomorrow/:zone?', async (request) => {
+    const { zone } = request.params;
+    console.log(zone);
+    if (!zone) {
+      throw new Error('Zone is required.')
+    }
+
+    return notImplementYetReply;
+
   });
 }
 
