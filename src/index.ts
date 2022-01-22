@@ -1,16 +1,19 @@
 import fastify from 'fastify';
+import fastifyCors from 'fastify-cors';
 import notImplementYetRoutes from './not-implement-yet-routes.js';
 import timesRoute from './times-route.js';
+import corsConfig from './cors-config.js';
 
 const server = fastify();
 
+server.register(fastifyCors, corsConfig);
 server.register(timesRoute);
 server.register(notImplementYetRoutes);
-
+console.log(process.env.NODE_ENV);
 server.get('/', async (req, reply) => {
   return {
     status: 'OK',
-    message: 'SolatAPI - API untuk waktu solat di Malaysia. Data waktu solat diambil dari laman web JAKIM. Dibina oleh Fajarhac Technology. Lawati https://fajarhac.com'
+    message: 'SolatAPI - API untuk waktu solat di Malaysia. Data waktu solat diambil dari laman web JAKIM. Dibina oleh Fajarhac Technology. Lawati https://solatapi.fajarhac.com/api'
   }
 })
 
