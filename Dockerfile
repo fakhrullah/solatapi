@@ -33,7 +33,7 @@ RUN npm config set unsafe-perm true
 RUN npm ci --only=production
 # RUN npm install
 
-EXPOSE 1337
+EXPOSE 4000
 
 USER node
 
