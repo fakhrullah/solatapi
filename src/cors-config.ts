@@ -3,7 +3,7 @@ import { FastifyCorsOptions } from "fastify-cors";
 let corsConfig: FastifyCorsOptions;
 
 const allowedOrigins: (string | RegExp)[] = [
-  '*.fajarhac.com',
+  /\.fajarhac\.com$/i,
   'fajarhac.com',
   // /localhost/i,
 ]
