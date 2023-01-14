@@ -1,0 +1,25 @@
+GET http://localhost:4000/times?zone=sgr01&from=01-01-2023
+
+###
+GET http://localhost:4000/times?zone=sgr01&from=01-01-2023&format=12-hour
+
+###
+GET http://localhost:4000/times?zone=sgr01&from=04-11-2022&format=24-hour
+
+###
+GET http://localhost:4000/times?zone=sgr01&from=01-01-2023&to=07-01-2023
+
+###
+GET http://localhost:4000/times?zone=trg02&from=01-01-2023&to=07-01-2023&format=12-hour
+
+###
+GET http://localhost:4000/today/sgr01
+
+###
+GET http://localhost:4000/today/trg02
+
+###
+GET http://localhost:4000/tomorrow/sgr01
+
+###
+GET http://localhost:4000/yesterday/sgr01

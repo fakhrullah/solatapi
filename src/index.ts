@@ -2,12 +2,14 @@ import fastify from 'fastify';
 import fastifyCors from 'fastify-cors';
 import notImplementYetRoutes from './not-implement-yet-routes.js';
 import timesRoute from './times-route.js';
+import { zonesRoute } from './zones-route.js';
 import corsConfig from './cors-config.js';
 
 const server = fastify();
 
 server.register(fastifyCors, corsConfig);
 server.register(timesRoute);
+server.register(zonesRoute);
 server.register(notImplementYetRoutes);
 console.log(process.env.NODE_ENV);
 server.get('/', async (req, reply) => {
