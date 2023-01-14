@@ -14,3 +14,8 @@ FROM docker.io/nginx:1.23.3-alpine
 COPY --from=builder /usr/src/app/redoc-web/index.html /usr/share/nginx/html
 COPY --from=builder /usr/src/app/redoc-web/solat-api-malaysia.yml /usr/share/nginx/html
 
+# COPY to subpath so that I can serve to subpath also
+# Allow to see on solatapi.fajarhac.com/api
+
+COPY --from=builder /usr/src/app/redoc-web/index.html /usr/share/nginx/html/api
+COPY --from=builder /usr/src/app/redoc-web/solat-api-malaysia.yml /usr/share/nginx/html/api
