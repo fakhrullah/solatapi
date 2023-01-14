@@ -17,5 +17,6 @@ COPY --from=builder /usr/src/app/redoc-web/solat-api-malaysia.yml /usr/share/ngi
 # COPY to subpath so that I can serve to subpath also
 # Allow to see on solatapi.fajarhac.com/api
 
+RUN mkdir /usr/share/nginx/html/api
 COPY --from=builder /usr/src/app/redoc-web/index.html /usr/share/nginx/html/api
 COPY --from=builder /usr/src/app/redoc-web/solat-api-malaysia.yml /usr/share/nginx/html/api
