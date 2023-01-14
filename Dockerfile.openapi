@@ -1,0 +1,16 @@
+# Stage 1 - Build
+FROM node:18.13.0-bullseye-slim as builder
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+COPY package*.json ./
+RUN npm config set unsafe-perm true
+RUN npm install --global @lyra-network/openapi-dev-tool
+COPY . .
+RUN openapi-dev-tool merge -c ./openapi-config.json --output redoc-web
+
+# Stage 2 - App
+FROM docker.io/nginx:1.23.3-alpine
+
+COPY --from=builder /usr/src/app/redoc-web/index.html /usr/share/nginx/html
+COPY --from=builder /usr/src/app/redoc-web/solat-api-malaysia.yml /usr/share/nginx/html
+
