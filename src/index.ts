@@ -11,7 +11,9 @@ server.register(fastifyCors, corsConfig);
 server.register(timesRoute);
 server.register(zonesRoute);
 server.register(notImplementYetRoutes);
-console.log(process.env.NODE_ENV);
+
+console.log('NODE_ENV" ', process.env.NODE_ENV);
+
 server.get('/', async (req, reply) => {
   return {
     status: 'OK',
