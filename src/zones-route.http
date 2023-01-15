@@ -6,4 +6,8 @@ GET http://localhost:4000/zones/sgr01
 
 ###
 
-GET http://localhost:4000/zones/tgr02
+GET http://localhost:4000/zones/trg02
+
+###
+
+GET http://localhost:4000/zones/non02
