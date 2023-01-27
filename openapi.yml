@@ -19,14 +19,14 @@ info:
 
     Sekiranya, ada perbezaan, satu isu baru akan dibuat di github.
 
-  version: "1.1.12"
+  version: "2.0.0"
   contact:
     name: Fakhrullah Padzil (Github)
     url: https://github.com/fakhrullah/solatapi
     x-twitter: https://twitter.com/fajarhac
 servers:
-  - url: https://solatapi.fajarhac.com
-  - url: http://localhost:4000
+  - url: https://solatapi.fajarhac.com/v2/
+  - url: http://localhost:4000/v2
 
 components:
   schemas:
