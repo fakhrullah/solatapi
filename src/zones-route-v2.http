@@ -1,0 +1,13 @@
+GET http://localhost:4000/v2/zones
+
+###
+
+GET http://localhost:4000/v2/zones/sgr01
+
+###
+
+GET http://localhost:4000/v2/zones/trg02
+
+###
+
+GET http://localhost:4000/v2/zones/non02
