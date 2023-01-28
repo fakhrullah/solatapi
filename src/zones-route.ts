@@ -1,17 +1,11 @@
 import { FastifyPluginAsync, RouteShorthandOptions } from "fastify";
+import { getAllZoneDetail, getZoneDetail } from "./helpers.js";
 import ZoneCode from "./zone.js";
-import zoneLocationDB from './zone-location-db.json' assert { type: 'json' };
 
 interface IZone {
   Params: {
     zone: ZoneCode | undefined
   },
-}
-
-interface IZonesLocation {
-  zone: string
-  state: string
-  locations: string[]
 }
 
 const zonesRouteOpts: RouteShorthandOptions = {
@@ -34,15 +28,13 @@ export const zonesRoute: FastifyPluginAsync = async (fastify, options) => {
     zonesRouteOpts,
     async (req, reply) => {
 
-      const listOfAllZonesLocation: IZonesLocation[] = zoneLocationDB;
-
       try {
 
         if (typeof req.params.zone === 'undefined') {
           // return list of zones
           return {
             status: 'success',
-            results: listOfAllZonesLocation,
+            results: getAllZoneDetail(),
           }
         }
 
@@ -55,7 +47,7 @@ export const zonesRoute: FastifyPluginAsync = async (fastify, options) => {
 
         return {
           status: 'success',
-          results: listOfAllZonesLocation.filter((zoneLocation) => zoneLocation.zone === zone),
+          results: getZoneDetail(zone),
         };
 
       } catch (error: any) {
