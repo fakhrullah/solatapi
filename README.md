@@ -2,6 +2,6 @@
 
 This API is publicly open at https://solatapi.fajarhac.com/v2/.
 
-Full documentation can be viewed in https://solatapi.fahjarhac.com/api
+Full documentation can be viewed in https://solatapi.fajarhac.com/api
 
 
