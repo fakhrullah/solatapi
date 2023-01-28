@@ -21,10 +21,13 @@ GET http://localhost:4000/v2/times?zone=trg02&from=01-01-2021&format=12-hour
 GET http://localhost:4000/v2/today/sgr01
 
 ###
-GET http://localhost:4000/v2/today/trg02
+GET http://localhost:4000/v2/today/trg02?format=24-hour
 
 ###
 GET http://localhost:4000/v2/tomorrow/sgr01
 
 ###
 GET http://localhost:4000/v2/yesterday/sgr01
+
+###
+GET http://localhost:4000/v2/yesterday/kdh01?format=12-hour

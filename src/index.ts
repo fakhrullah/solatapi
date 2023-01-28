@@ -6,6 +6,7 @@ import { zonesRoute } from './zones-route.js';
 import corsConfig from './cors-config.js';
 import timesRouteV2 from './times-route-v2.js';
 import { zonesRouteV2 } from './zones-route-v2.js';
+import todayTomorrowRoutesV2 from './v2-today-tomorrow-route.js';
 
 const server = fastify();
 
@@ -16,6 +17,7 @@ server.register(notImplementYetRoutes);
 
 // v2
 server.register(timesRouteV2);
+server.register(todayTomorrowRoutesV2);
 server.register(zonesRouteV2);
 
 console.log('NODE_ENV" ', process.env.NODE_ENV);
