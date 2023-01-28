@@ -25,9 +25,16 @@ console.log('NODE_ENV" ', process.env.NODE_ENV);
 server.get('/', async (req, reply) => {
   return {
     status: 'OK',
-    message: 'SolatAPI - API untuk waktu solat di Malaysia. Data waktu solat diambil dari laman web JAKIM. Dibina oleh Fajarhac Technology. Lawati https://solatapi.fajarhac.com/api'
+    message: 'SolatAPI - API untuk waktu solat di Malaysia. Data waktu solat diambil dari laman web JAKIM. Dibina oleh Fajarhac Technology. Lawati https://solatapi.fajarhac.com/api untuk cara guna API'
   }
-})
+});
+
+server.get('/info', async (req, reply) => {
+  return {
+    status: 'OK',
+    message: 'SolatAPI - API untuk waktu solat di Malaysia. Data waktu solat diambil dari laman web JAKIM. Dibina oleh Fajarhac Technology. Lawati https://solatapi.fajarhac.com/api untuk cara guna API'
+  }
+});
 
 server.get('/health', async (req, reply) => {
   return {
