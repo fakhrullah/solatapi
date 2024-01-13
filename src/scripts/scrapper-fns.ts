@@ -37,8 +37,9 @@ const solatTimeApiPerYear = async (zoneCode: ZoneCode): Promise<PrayerTimesPerDa
   return prayerTimes;
 }
 
-const savePrayerTimesPerYear = async (zoneCode: ZoneCode) => {
-  const dbFile = path.join(dirname(fileURLToPath(import.meta.url)), '../../db.json');
+const savePrayerTimesPerYear = async (zoneCode: ZoneCode, year?: number) => {
+  const thisYear = year === undefined ? (new Date()).getFullYear(): year;
+  const dbFile = path.join(dirname(fileURLToPath(import.meta.url)), `../../db-${year}.json`);
   const dbAdapter = new JSONFile(dbFile);
   const db = new Low<any>(dbAdapter);
 

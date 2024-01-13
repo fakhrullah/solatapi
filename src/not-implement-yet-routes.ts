@@ -6,12 +6,6 @@ interface IDay {
   },
 }
 
-const notImplementYetReply = {
-  statusCode: 501,
-  status: 'success',
-  message: 'Not implement yet. Will implement it as soon as possible.'
-}
-
 const notImplementYetRoutes: FastifyPluginAsync = async (fastify, opts) => {
 
   fastify.get<IDay>('/today/:zone?', (request, reply) => {
@@ -25,7 +19,7 @@ const notImplementYetRoutes: FastifyPluginAsync = async (fastify, opts) => {
       .code(501)
       .send({
         status: 'success',
-        message: 'Not implement yet. Will implement it as soon as possible.'
+        message: `Please use v2 API. https://${request.hostname}/v2/today/${zone}`
       })
   });
 
@@ -36,8 +30,11 @@ const notImplementYetRoutes: FastifyPluginAsync = async (fastify, opts) => {
       throw new Error('Zone is required.')
     }
 
-    return notImplementYetReply;
-
+    return {
+      statusCode: 501,
+      status: "success",
+      message: `Please use v2 API. https://${request.hostname}/v2/tomorrow/${zone}`
+    };
   });
 }
 
