@@ -16,6 +16,7 @@ enum ZoneCode {
   mlk01 = 'mlk01',
   ngs01 = 'ngs01',
   ngs02 = 'ngs02',
+  ngs03 = 'ngs03',
   phg01 = 'phg01',
   phg02 = 'phg02',
   phg03 = 'phg03',

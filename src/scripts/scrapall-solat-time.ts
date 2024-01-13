@@ -20,6 +20,7 @@ const zones = [
 'mlk01',
 'ngs01',
 'ngs02',
+'ngs03',
 'phg01',
 'phg02',
 'phg03',
