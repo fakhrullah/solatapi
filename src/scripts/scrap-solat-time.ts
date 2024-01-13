@@ -1,5 +1,17 @@
 #!/usr/bin/env node
 
+/**
+ * ## How to use this script
+ * 
+ * Using tsx:
+ * 
+ * Example
+ * 
+ * ```bash
+ * npx tsx ./src/scripts/scrap-solat-time.ts sgr01
+ * ```
+ */
+
 import ZoneCode from "../zone.js";
 import { solatTimeApiPerYear, savePrayerTimesPerYear } from "./scrapper-fns.js";
 
