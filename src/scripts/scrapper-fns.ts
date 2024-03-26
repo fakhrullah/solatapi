@@ -1,5 +1,5 @@
 import * as dateFnsTz from 'date-fns-tz';
-import { JSONFile, Low } from "lowdb";
+import { JSONFilePreset  } from 'lowdb/node';
 import fetch from "node-fetch";
 import path, { dirname } from 'path';
 import { fileURLToPath } from "url";
@@ -23,6 +23,10 @@ interface PrayerTimesPerDayRaw {
   isha: string;
 }
 
+type IDatabase = {
+  [x in ZoneCode]: PrayerTime[];
+} | {};
+
 const buildApiUrl = (zoneCode: ZoneCode) => {
   // const url = `https://www.e-solat.gov.my/index.php?r=esolatApi/takwimsolat&period=month&zone=${zoneCode}`;
   const url = `https://www.e-solat.gov.my/index.php?r=esolatApi/takwimsolat&period=year&zone=${zoneCode}`;
@@ -40,8 +44,7 @@ const solatTimeApiPerYear = async (zoneCode: ZoneCode): Promise<PrayerTimesPerDa
 const savePrayerTimesPerYear = async (zoneCode: ZoneCode, year?: number) => {
   const thisYear = year === undefined ? (new Date()).getFullYear(): year;
   const dbFile = path.join(dirname(fileURLToPath(import.meta.url)), `../../db-${year}.json`);
-  const dbAdapter = new JSONFile(dbFile);
-  const db = new Low<any>(dbAdapter);
+  const db = await JSONFilePreset<IDatabase>(dbFile, {} as IDatabase);
 
   await db.read();
 
@@ -78,6 +81,7 @@ const savePrayerTimesPerYear = async (zoneCode: ZoneCode, year?: number) => {
 
   console.log(prayerTimesConverted);
 
+  // @ts-ignore
   db.data[zoneCode] = prayerTimesConverted;
 
   await db.write();
