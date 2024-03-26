@@ -1,36 +1,39 @@
-GET http://localhost:4000/v2/times?zone=sgr01&from=01-01-2023
+# You need to install RestClient (`ext install humao.rest-client`) in VSCode to use this.
+# After install the plugin, you will see, "Send Request" button action on each GET request below.
+
+GET {{baseUrl}}/v2/times?zone=sgr01&from=01-01-2023
 
 ###
-GET http://localhost:4000/v2/times?zone=sgr01&from=01-01-2023&format=12-hour
+GET {{baseUrl}}/v2/times?zone=sgr01&from=01-01-2023&format=12-hour
 
 ###
-GET http://localhost:4000/v2/times?zone=pls01&from=11-02-2024&format=12-hour
+GET {{baseUrl}}/v2/times?zone=pls01&from=11-02-2024&format=12-hour
 
 ###
-GET http://localhost:4000/v2/times?zone=sgr01&from=04-11-2022&format=24-hour
+GET {{baseUrl}}/v2/times?zone=sgr01&from=04-11-2022&format=24-hour
 
 ###
-GET http://localhost:4000/v2/times?zone=sgr01&from=01-01-2023&to=07-01-2023
+GET {{baseUrl}}/v2/times?zone=sgr01&from=01-01-2023&to=07-01-2023
 
 ###
-GET http://localhost:4000/v2/times?zone=trg02&from=01-01-2024&to=07-01-2024&format=12-hour
+GET {{baseUrl}}/v2/times?zone=trg02&from=01-01-2024&to=07-01-2024&format=12-hour
 
 ###
 # Should error because SolatAPI only contain data from 2022 ~ 2023
 
-GET http://localhost:4000/v2/times?zone=trg02&from=01-01-2021&format=12-hour
+GET {{baseUrl}}/v2/times?zone=trg02&from=01-01-2021&format=12-hour
 
 ###
-GET http://localhost:4000/v2/today/sgr01
+GET {{baseUrl}}/v2/today/sgr01
 
 ###
-GET http://localhost:4000/v2/today/trg02?format=24-hour
+GET {{baseUrl}}/v2/today/trg02?format=24-hour
 
 ###
-GET http://localhost:4000/v2/tomorrow/sgr01
+GET {{baseUrl}}/v2/tomorrow/sgr01
 
 ###
-GET http://localhost:4000/v2/yesterday/sgr01
+GET {{baseUrl}}/v2/yesterday/sgr01
 
 ###
-GET http://localhost:4000/v2/yesterday/kdh01?format=12-hour
+GET {{baseUrl}}/v2/yesterday/kdh01?format=12-hour
