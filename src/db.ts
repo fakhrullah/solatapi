@@ -1,15 +1,25 @@
-import path, { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import { JSONFile, Low } from 'lowdb';
-import ZoneCode from './zone';
 import { PrayerTime } from './PrayerTimes';
+import ZoneCode from './zone';
 
-type Database = {
+type IDatabase = {
   [x in ZoneCode]: PrayerTime[];
 };
 
-const dbFile = path.join(dirname(fileURLToPath(import.meta.url)), '../db.json');
-const dbAdapter = new JSONFile<Database>(dbFile);
-const db = new Low<Database>(dbAdapter);
+import database from './db.json' assert {type: 'json'};
+
+const allData: IDatabase = database as IDatabase;
+
+const dbObj= {
+  data: allData
+};
+
+// Database structure like this to match lowdb interface
+const db = {
+  read() {
+    return dbObj;
+  },
+  ...dbObj
+}
+
 
 export default db;
