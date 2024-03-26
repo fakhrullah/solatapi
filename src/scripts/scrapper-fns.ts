@@ -1,4 +1,4 @@
-import dateFnsTz from "date-fns-tz";
+import * as dateFnsTz from 'date-fns-tz';
 import { JSONFile, Low } from "lowdb";
 import fetch from "node-fetch";
 import path, { dirname } from 'path';

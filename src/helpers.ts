@@ -1,4 +1,4 @@
-import dateFnsTz from 'date-fns-tz';
+import * as dateFnsTz from 'date-fns-tz';
 import { format as dateFormat, parse as dateParse, formatISO as dateFormatISO } from 'date-fns';
 // import { LocalStorage } from 'lowdb/lib';
 import ZoneCode from './zone';
