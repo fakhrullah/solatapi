@@ -1,5 +1,5 @@
 import fastify from 'fastify';
-import fastifyCors from 'fastify-cors';
+import fastifyCors from '@fastify/cors';
 import notImplementYetRoutes from './not-implement-yet-routes.js';
 import timesRoute from './times-route.js';
 import { zonesRoute } from './zones-route.js';
@@ -42,7 +42,9 @@ server.get('/health', async (req, reply) => {
   };
 })
 
-server.listen(process.env.PORT || 4000, '0.0.0.0', (err, address) => {
+const getPort = (): number => parseInt(process.env.PORT!) || 4000;
+
+server.listen({ port: getPort() }, (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);

@@ -1,5 +1,5 @@
 import { FastifyPluginAsync, RouteShorthandOptions } from "fastify";
-import dateFnsTz from "date-fns-tz";
+import * as dateFnsTz from 'date-fns-tz';
 import { isAfter, isBefore, parse as dateParse, } from 'date-fns'
 import db from "./db.js";
 import ZoneCode from './zone.js';

@@ -1,0 +1,13 @@
+{
+    "rest-client.environmentVariables": {
+        "$local": {
+            "baseUrl": "http://localhost:4000",
+        },
+        "$localB": {
+            "baseUrl": "http://localhost:4090"
+        },
+        "$localTesting": {
+            "baseUrl": "http://localhost:4040"
+        }
+    }
+}

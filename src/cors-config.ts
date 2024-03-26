@@ -1,4 +1,4 @@
-import { FastifyCorsOptions } from "fastify-cors";
+import { FastifyCorsOptions } from "@fastify/cors";
 
 let corsConfig: FastifyCorsOptions;
 
