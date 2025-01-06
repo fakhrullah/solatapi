@@ -5,7 +5,7 @@ import path, { dirname } from "node:path";
 import { fileURLToPath } from "url";
 import ZoneCode from '../zone.js';
 
-const listYears: number[] = [2022, 2023, 2024, 2025];
+const listYears: number[] = [2023, 2024, 2025];
 const listOfFiles: PathLike[] = listYears.map((yearNumber) => {
   const file: PathLike = path.join(
     dirname(fileURLToPath(import.meta.url)),
