@@ -5,7 +5,7 @@ type IDatabase = {
   [x in ZoneCode]: PrayerTime[];
 };
 
-import database from './db.json' assert {type: 'json'};
+import database from './db.json' with {type: 'json'};
 
 const allData: IDatabase = database as IDatabase;
 

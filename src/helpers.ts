@@ -2,7 +2,7 @@ import * as dateFnsTz from 'date-fns-tz';
 import { format as dateFormat, parse as dateParse, formatISO as dateFormatISO } from 'date-fns';
 // import { LocalStorage } from 'lowdb/lib';
 import ZoneCode from './zone';
-import zoneLocationDB from './zone-location-db.json' assert { type: 'json' };
+import zoneLocationDB from './zone-location-db.json' with { type: 'json' };
 import { OutputFormat } from './generated-types/OutputFormat';
 import { PrayerTime, PrayerTimeOutput } from './PrayerTimes';
 
