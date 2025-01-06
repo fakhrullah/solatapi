@@ -19,7 +19,7 @@ GET {{baseUrl}}/v2/times?zone=sgr01&from=01-01-2023&to=07-01-2023
 GET {{baseUrl}}/v2/times?zone=trg02&from=01-01-2024&to=07-01-2024&format=12-hour
 
 ###
-# Should error because SolatAPI only contain data from 2022 ~ 2023
+# Should error because SolatAPI only contain data from 2022 ~ 2025
 
 GET {{baseUrl}}/v2/times?zone=trg02&from=01-01-2021&format=12-hour
 
