@@ -32,4 +32,4 @@ if (!Object.values(ZoneCode).includes(zoneCode as ZoneCode)) {
 //     throw err;
 //   })
 
-savePrayerTimesPerYear(zoneCode as ZoneCode);
+savePrayerTimesPerYear(zoneCode as ZoneCode, 2026);
