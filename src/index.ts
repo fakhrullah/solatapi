@@ -44,7 +44,7 @@ server.get('/health', async (req, reply) => {
 
 const getPort = (): number => parseInt(process.env.PORT!) || 4000;
 
-server.listen({ port: getPort() }, (err, address) => {
+server.listen({ port: getPort(), host: '0.0.0.0' }, (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);

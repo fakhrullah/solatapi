@@ -64,14 +64,14 @@ const timesRouteV2: FastifyPluginAsync = async (fastify, options) => {
         throw new Error(`Zone ${zoneCode} is not available in our database`);
       }
 
-      // Only allow data in 2022 ~ 2024
+      // Only allow data in 2022 ~ 2026
       if (
         fromDate.getFullYear() < 2022
-        || fromDate.getFullYear() > 2024
+        || fromDate.getFullYear() > 2026
         || toDate.getFullYear() < 2022
-        || toDate.getFullYear() > 2024
+        || toDate.getFullYear() > 2026
       ) {
-        throw new Error(`SolatAPI only contains data for 2022 ~ 2024 only`);
+        throw new Error(`SolatAPI only contains data for 2022 ~ 2026 only`);
       }
 
       await db.read();

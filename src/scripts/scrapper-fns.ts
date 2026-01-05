@@ -1,6 +1,6 @@
 import * as dateFnsTz from 'date-fns-tz';
 import { JSONFilePreset  } from 'lowdb/node';
-import fetch from "node-fetch";
+import fetch, { FormData } from "node-fetch";
 import path, { dirname } from 'path';
 import { fileURLToPath } from "url";
 import { format as dateFormat, parse as dateParse } from 'date-fns';
@@ -29,13 +29,18 @@ type IDatabase = {
 
 const buildApiUrl = (zoneCode: ZoneCode) => {
   // const url = `https://www.e-solat.gov.my/index.php?r=esolatApi/takwimsolat&period=month&zone=${zoneCode}`;
-  const url = `https://www.e-solat.gov.my/index.php?r=esolatApi/takwimsolat&period=year&zone=${zoneCode}`;
+  const url = `https://www.e-solat.gov.my/index.php?r=esolatApi/takwimsolat&period=duration&zone=${zoneCode}`;
   return url;
 }
 
 const solatTimeApiPerYear = async (zoneCode: ZoneCode): Promise<PrayerTimesPerDayRaw[]> => {
   const url = buildApiUrl(zoneCode);
-  const result = await fetch(url);
+
+  const formData = new FormData();
+  formData.append('datestart', `2026-01-01`);
+  formData.append('dateend', `2026-12-31`);
+
+  const result = await fetch(url, { method: 'POST', body: formData });
   const responseJson: any = await result.json();
   const prayerTimes: PrayerTimesPerDayRaw[] = responseJson.prayerTime;
   return prayerTimes;
@@ -43,7 +48,7 @@ const solatTimeApiPerYear = async (zoneCode: ZoneCode): Promise<PrayerTimesPerDa
 
 const savePrayerTimesPerYear = async (zoneCode: ZoneCode, year?: number) => {
   const thisYear = year === undefined ? (new Date()).getFullYear(): year;
-  const dbFile = path.join(dirname(fileURLToPath(import.meta.url)), `../../db-${year}.json`);
+  const dbFile = path.join(dirname(fileURLToPath(import.meta.url)), `../../db-${thisYear}.json`);
   const db = await JSONFilePreset<IDatabase>(dbFile, {} as IDatabase);
 
   await db.read();
